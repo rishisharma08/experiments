@@ -78,7 +78,7 @@ function App() {
           <img
             className="dragme"
             ref={drag2Ref}
-            src="https://townsquare.media/site/705/files/2026/01/attachment-untitled-design-8.jpg"
+            src="/attachment.webp"
             style={{
               width: "auto",
               height: "auto",
@@ -109,7 +109,7 @@ function App() {
           <img
             className="dragme"
             ref={drag3Ref}
-            src="https://townsquare.media/site/705/files/2026/01/attachment-untitled-design-8.jpg"
+            src="/attachment.webp"
             style={{
               display: "block",
               width: "100%",
