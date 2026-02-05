@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
-import type { DragDirections, Pos } from './types';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
+import type { DragDirections, Pos } from 'src/types';
 
 interface Props {
   dragElem: RefObject<HTMLElement | null>,
@@ -8,7 +8,7 @@ interface Props {
   allowedDirections?: DragDirections[],
 }
 
-const checkBoundsDefault = ( dragElem: HTMLElement, pos: Pos, delta: Pos, boundElem?: HTMLElement | null ) => {
+const checkBoundsDefault = ( dragElem: HTMLElement, pos: Pos ) => {
   return pos;
 };
 
@@ -21,12 +21,13 @@ const useDrag = ({
   const isDraggingRef = useRef<boolean>(false);
   const mouseDownTransformRef = useRef<Pos>({x: 0, y:0});
   const mouseDownPosRef = useRef<Pos>({x: 0, y:0});
-  const [transform, transformSet] = useState<Pos>({x: 0, y:0});
-  const transformRef = useRef<Pos>(transform);
+  const [transform, transformSet] = useState<Pos | null>(null);
+  const transformRef = useRef<Pos>(transform || {x: 0, y: 0});
+  const isInitializedRef = useRef<boolean>(false);
 
   // Keep ref in sync with state
   useEffect(() => {
-    transformRef.current = transform;
+    transformRef.current = transform || {x: 0, y: 0};
   }, [transform]);
 
   const handleMouseMove = useCallback(( e: MouseEvent | TouchEvent ) => {
@@ -65,6 +66,7 @@ const useDrag = ({
   }, [dragElem.current?.classList]);
 
   const handleMouseDown = useCallback(( e: MouseEvent | TouchEvent ) => {
+    e.stopPropagation();
     isDraggingRef.current = true;
     if( "clientX" in e ){
       mouseDownPosRef.current = {
@@ -83,19 +85,55 @@ const useDrag = ({
 
   const reset = () => {
     transformSet({x: 0, y: 0});
+    isInitializedRef.current = false;
   };
 
+  const setInitialTransforms = ( elem: HTMLElement ) => {
+    const style = window.getComputedStyle( elem );
+    const matrix = style.transform;
+    let initialTransform = {x: 0, y: 0};
+
+    if ( matrix && matrix !== 'none') {
+      const matches = matrix.match(/matrix.*\((.+)\)/);
+      if( matches ){
+        const values = matches[1].split(', ');
+        const translateX = parseFloat(values[4]); // X position
+        const translateY = parseFloat(values[5]); // Y position
+        initialTransform = {
+          x: translateX,
+          y: translateY,
+        };
+      }
+    }
+
+    // Defer state update to avoid cascading renders in React 19
+    queueMicrotask(() => {
+      transformSet(initialTransform);
+    });
+  };
+
+  // Initialize transform from existing CSS transform (runs once)
+  useLayoutEffect(() => {
+    const element = dragElem.current;
+    if (element && !isInitializedRef.current) {
+      setInitialTransforms(element);
+      isInitializedRef.current = true;
+    }
+  }, [dragElem]);
+
+  // Setup event listeners
   useEffect(() => {
     const element = dragElem.current;
     if( element ){
-      element.addEventListener( "mousedown", handleMouseDown );
-      window.addEventListener( "mousemove", handleMouseMove );
-      window.addEventListener( "mouseup", handleMouseUp );
-      element.addEventListener( "touchstart", handleMouseDown );
-      element.addEventListener( "touchmove", handleMouseMove );
-      window.addEventListener( "touchend", handleMouseUp );
-      window.addEventListener("touchcancel", handleMouseUp);
+      element.addEventListener( "mousedown", handleMouseDown, {passive: true} );
+      window.addEventListener( "mousemove", handleMouseMove, {passive: true} );
+      window.addEventListener( "mouseup", handleMouseUp, {passive: true} );
+      element.addEventListener( "touchstart", handleMouseDown, {passive: true} );
+      element.addEventListener( "touchmove", handleMouseMove, {passive: true} );
+      window.addEventListener( "touchend", handleMouseUp, {passive: true} );
+      window.addEventListener( "touchcancel", handleMouseUp, {passive: true} );
       allowedDirections.forEach(( dir )=>{
+        element.classList.add( `drag-elem` );
         element.classList.add( `drag-direction-${dir}` );
       });
     }
@@ -109,6 +147,7 @@ const useDrag = ({
         window.removeEventListener( "touchend", handleMouseUp );
         window.removeEventListener( "touchcancel", handleMouseUp );
         allowedDirections.forEach(( dir )=>{
+          element.classList.remove( `drag-elem` );
           element.classList.remove( `drag-direction-${dir}` );
         });
       }

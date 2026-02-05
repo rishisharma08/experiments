@@ -1,4 +1,4 @@
-import type { Pos } from "./types";
+import type { Pos } from "src/types";
 
 const checkBgBounds = ( dragElem: HTMLElement, pos: Pos, delta: Pos, boundElem?: HTMLElement | null ): Pos => {
   if( !boundElem ){

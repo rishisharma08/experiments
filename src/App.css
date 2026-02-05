@@ -1,24 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: calc( 2 * var( --spacing ) );
   /* text-align: center; */
   width: 100%;
+  display: flex;
+  gap: calc( 2 * var( --spacing ) );
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* aside.sidebar{
+  flex: 0 0 300px;
+  padding: var( --spacing );
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+main{
+  flex: 1;
+  padding: var( --spacing );
+} */
+/* nav ul{
+  list-style: none;
+  padding: 0;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+nav ul.is-parent{
+  padding-left: var( --spacing );
 }
-
+nav ul .is-active{
+  font-weight: bold;
+  color: #007bff;
+} */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -34,18 +47,16 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 .group{
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
+}
+.group > h5,
+.group > h4,
+.group > h3{
+  /* font-weight: normal; */
 }
 .bound{
   width: 500px;
@@ -88,6 +99,57 @@ select:not([multiple]){
   background-position: calc(100% - 10px) 50%;
   background-size: 30px;
   background-repeat: no-repeat;
+}
+.resizeme{
+  background: rgba(255, 192, 203, 0.2);
+  position: absolute;
+  display: flex;
+  place-content: center;
+  flex-wrap: wrap;
+  user-select: none;
+}
+.resizedragme{
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 192, 250, 0.5);
+  user-select: none;
+  position: absolute;
+  border-radius: 50%;
+}
+.resizedragme-container{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+.resizedragme-top-container{
+  top: 0;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  cursor: ns-resize;
+}
+.resizedragme-bottom-container{
+  bottom: 0;
+  left: 50%;
+  transform: translate( -50%, 50% );
+  cursor: ns-resize;
+}
+.resizedragme.resizedragme-bottom{
+  /* transform: translateY( 200px ); */
+}
+.resizedragme-left-container{
+  left: 0;
+  top: 50%;
+  transform: translate( -50%, -50% );
+  cursor: ew-resize;
+}
+.resizedragme-right-container{
+  right: 0;
+  top: 50%;
+  transform: translate( 50%, -50% );
+  cursor: ew-resize;
+}
+.resizedragme.resizedragme-right{
+  /* transform: translateX( 200px ); */
 }
 @media (max-width: 600px) {
   .group{
