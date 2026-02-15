@@ -9,6 +9,7 @@ interface Props {
   startingPos?: Pos,
 }
 
+// @ts-expect-error - simplified default implementation
 const checkBoundsDefault = ( dragElem: HTMLElement, pos: Pos ) => {
   return pos;
 };

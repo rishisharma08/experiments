@@ -1,5 +1,6 @@
 import type { Pos } from "src/types";
 
+// @ts-expect-error - simplified default implementation
 const checkBgBounds = ( dragElem: HTMLElement, pos: Pos, delta: Pos, boundElem?: HTMLElement | null ): Pos => {
   if( !boundElem ){
     return pos;

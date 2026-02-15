@@ -4,7 +4,12 @@ import { RouterProvider, createBrowserRouter, type RouteObject } from "react-rou
 import routes from './routeConfig.tsx';
 import './index.css';
 
-const router = createBrowserRouter(routes as RouteObject[]);
+const router = createBrowserRouter(
+  routes as RouteObject[],
+  {
+    basename: import.meta.env.BASE_URL
+  }
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
