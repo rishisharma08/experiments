@@ -147,7 +147,7 @@ function ImageCropDemo() {
         <img
           // className="dragme"
           onLoad={imageOnLoad}
-          src="/attachment.jpg"
+          src="/usedrag/attachment.jpg"
           style={{
             inset: 0,
             width: "100%",
@@ -177,7 +177,7 @@ function ImageCropDemo() {
             left: 0,
             width: 600,
             height: 600 * imageDims.natural.height / imageDims.natural.width,
-            backgroundImage: `url("/attachment.jpg")`,
+            backgroundImage: `url("/usedrag/attachment.jpg")`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: backgroundPositionString,
             backgroundSize: "600px"
