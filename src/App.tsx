@@ -3,12 +3,28 @@ import PageSubHeading from "./components/general/PageSubHeading"
 import SectionCaption from "./components/general/SectionCaption"
 import SectionHeading from "./components/general/SectionHeading"
 import TextLabel from "./components/general/TextLabel"
+import IconGithub from "src/assets/icon-github.svg?react";
+import IconLinkedin from "src/assets/icon-linkedin.svg?react";
 
 function App() {
   return (
     <>
-      <div className="group">
-        <PageHeading>Demo site of <span className="accent-color">Rishi Sharma</span></PageHeading>
+      <div className="group flex gap-5 items-center">
+        <PageHeading>
+          Demo site of <span className="accent-color">Rishi Sharma</span>
+        </PageHeading>
+        <div className="flex gap-2 pl-5 border-l border-l-gray-700">
+          <a href="https://github.com/rishisharma08" target="_blank" rel="noopener noreferrer">
+            <IconGithub
+              className="size-5"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/rishisharma013/" target="_blank" rel="noopener noreferrer">
+            <IconLinkedin
+              className="size-5"
+            />
+          </a>
+        </div>
       </div>
       <div className="groupme">
         <section className="space-y-10">
