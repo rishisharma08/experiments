@@ -20,7 +20,7 @@ A React hook for adding drag functionality to HTML elements with optional bounda
 - Custom boundary checking logic
 - Transform-based and object-position positioning
 
-[View Demo](https://rishisharma08.github.io/experiments/#/demos) | [Documentation](src/components/demos/usedrag/README.md)
+[View Demo](https://rishisharma08.github.io/experiments/#/demos/usedrag) | [Documentation](src/components/demos/usedrag/README.md)
 
 ## Getting Started
 
