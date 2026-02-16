@@ -4,7 +4,7 @@ import type { RouteConfig } from './routeConfig';
 import './App.css';
 import Bg from "./components/general/Bg";
 import MenuHamburgerButton from "./components/general/MenuHamburgerButton";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 
 interface SidebarLinksProps {
   routes: RouteConfig[],
@@ -27,7 +27,7 @@ function SidebarLinks({ routes, parentPath = '', onLinkClick }: SidebarLinksProp
             <NavLink
               to={fullPath}
               className={({ isActive }) =>
-                "block" + ( isActive ? "is-active accent-color " : "" )
+                "block " + ( isActive ? "is-active accent-color " : "" )
               }
               onClick={onLinkClick}
             >
@@ -70,7 +70,9 @@ function Layout(){
           className="absolute top-0 right-0 overflow-x-auto sm:hidden z-20"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         />
-        <Outlet/>
+        <Suspense fallback={<div className="p-4">Loading...</div>}>
+          <Outlet/>
+        </Suspense>
       </main>
     </div>
   )

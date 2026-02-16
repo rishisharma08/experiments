@@ -1,16 +1,16 @@
-import App from 'src/App.tsx'
-import Demos from 'src/Demos.tsx';
-import ImageCropDemo from 'demos/usedrag/components/ImageCropDemo';
-import ResizeDemo from 'demos/usedrag/components/ResizeDemo';
-import NormalElementBounds from 'demos/usedrag/components/NormalElementBounds';
-import ImageElementBounds from 'demos/usedrag/components/ImageElementBounds';
-import ImageObjectPosition from 'demos/usedrag/components/ImageObjectPosition';
 import Layout from 'src/Layout.tsx';
-// import UseDragPage from './components/demos/usedrag';
-// import { Navigate } from 'react-router';
-import DemosIndex from './components/demos';
-import CssEasing from './components/demos/usedrag/components/CssEasing';
-import UseDragIndex from './components/demos/usedrag/UseDragIndex';
+import { lazy } from 'react';
+
+const App = lazy(()=>import( "src/App" ));
+const Demos = lazy(()=>import( "src/Demos" ));
+const ImageCropDemo = lazy(()=>import( 'demos/usedrag/components/ImageCropDemo' ) );
+const ResizeDemo = lazy(()=>import( 'demos/usedrag/components/ResizeDemo' ));
+const NormalElementBounds = lazy(()=>import( 'demos/usedrag/components/NormalElementBounds' ));
+const ImageElementBounds = lazy(()=>import( 'demos/usedrag/components/ImageElementBounds' ));
+const ImageObjectPosition = lazy(()=>import( 'demos/usedrag/components/ImageObjectPosition' ));
+const DemosIndex = lazy(()=>import( './components/demos' ));
+const CssEasing = lazy(()=>import( './components/demos/usedrag/components/CssEasing' ));
+const UseDragIndex = lazy(()=>import( './components/demos/usedrag/UseDragIndex' ));
 
 export interface RouteConfig {
   path?: string;

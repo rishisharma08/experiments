@@ -143,7 +143,7 @@ function CssEasing(){
             transitionProperty: isDragging ? "none" : property,
             transitionDuration: "1000ms",
             transitionTimingFunction: transitionTimingFunction,
-            ...( property === "transform" ? {transform: `translateX(${ ( isDragging ? 0 : size ) - sampleDivDims.width }px)`} :{} ),
+            ...( property === "transform" ? {transform: `translateX(${isDragging ? 0 : size - sampleDivDims.width}px)`} :{} ),
             ...( property === "opacity" ? {opacity: `${isDragging ? 0 : 1}`} :{} ),
           }}
         />
