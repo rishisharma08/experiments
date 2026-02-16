@@ -29,7 +29,7 @@ function ImageElementBounds() {
         <img
           className="dragme"
           ref={drag2Ref}
-          src="/usedrag/attachment.jpg"
+          src="/experiments/attachment.jpg"
           style={{
             width: "auto",
             height: "auto",
