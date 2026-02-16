@@ -14,6 +14,15 @@ function App() {
         <section className="space-y-10">
           <div>
             <PageSubHeading className="mb-4">
+              Links
+            </PageSubHeading>
+            <ul className="space-y-3">
+              <li><a href="https://github.com/rishisharma08" target="_blank" rel="noopener noreferrer">GIT</a></li>
+              <li><a href="https://www.linkedin.com/in/rishisharma013/" target="_blank" rel="noopener noreferrer">Linked In</a></li>
+            </ul>
+          </div>
+          <div>
+            <PageSubHeading className="mb-4">
               Technical Skills
             </PageSubHeading>
             <ul className="space-y-3">
