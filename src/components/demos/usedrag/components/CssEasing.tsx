@@ -72,7 +72,8 @@ function CssEasing(){
   const [totalFrames, totalFramesSet] = useState<number>( 0 );
   const animationFrameRef = useRef<number | null>( null );
 
-  const startLottieAnimation = useCallback(( bez: Bezier) => {
+  // const startLottieAnimation = useCallback(( bez: Bezier ) => {
+  const startLottieAnimation = useCallback(() => {
     if( !lottie ){
       return;
     }
@@ -141,7 +142,8 @@ function CssEasing(){
       }
       lottie.pause();
     } else {
-      startLottieAnimation( bezierArray );
+      // startLottieAnimation( bezierArray );
+      startLottieAnimation();
     }
   }, [ isDragging, bezierArray, lottie, totalFrames ]);
 
