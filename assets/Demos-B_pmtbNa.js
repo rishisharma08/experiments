@@ -1,1 +1,0 @@
-import{u as r,j as t,O as n}from"./index-CDTA7LMI.js";import{P as a}from"./PageHeading-DgLwqFRy.js";function i(){const e=r(),s=e[e.length-1]?.handle?.title;return t.jsxs(t.Fragment,{children:[t.jsx("div",{className:"group",children:s&&t.jsx(a,{children:s})}),t.jsx(n,{})]})}export{i as default};

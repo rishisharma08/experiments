@@ -1,0 +1,1 @@
+import{j as s,N as e}from"./index-CsoEFmrE.js";import{P as a}from"./PageSubHeading-D5An7kgZ.js";const t=()=>s.jsx("div",{className:"group",children:s.jsx(a,{className:"mt-8",children:s.jsx(e,{to:"useDrag",children:"useDrag"})})});export{t as default};
