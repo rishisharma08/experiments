@@ -13,14 +13,14 @@ const duration = 2000;
 
 type Bezier = [ string, string, string, string ];
 
-const solveCubicBezier = (t: number, p1y: number, p2y: number): number => {
-  // Simplified for y-axis assuming start is 0 and end is 1
-  // Formula: (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3
-  const cy = 3 * p1y;
-  const by = 3 * (p2y - p1y) - cy;
-  const ay = 1 - cy - by;
-  return ((ay * t + by) * t + cy) * t;
-};
+// const solveCubicBezier = (t: number, p1y: number, p2y: number): number => {
+//   // Simplified for y-axis assuming start is 0 and end is 1
+//   // Formula: (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3
+//   const cy = 3 * p1y;
+//   const by = 3 * (p2y - p1y) - cy;
+//   const ay = 1 - cy - by;
+//   return ((ay * t + by) * t + cy) * t;
+// };
 
 
 
@@ -83,7 +83,7 @@ function CssEasing(){
       animationFrameRef.current = null;
     }
 
-    const [ , y1, , y2 ] = bez.map( Number );
+    // const [ , y1, , y2 ] = bez.map( Number );
     const startTime = window.performance.now();
 
     const animate = (currentTime: number): void => {
