@@ -48,7 +48,7 @@ function Layout(){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return(
     <div
-      className="dark:text-gray-300 flex gap-4"
+      className="dark:text-gray-300 flex gap-4 h-full"
     >
       <Bg
         className="pointer-events-none absolute z-0 left-0 top-0 w-1/2 sm:w-125"
