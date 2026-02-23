@@ -74,7 +74,7 @@ const MultiLayerSVG = (props: MultiLayerSVGProps) => {
       if (layerGroup) {
         // Each layer calculates its own target based on its unique speed factor
         // Multiply by a larger factor to make the parallax effect visible
-        const parallaxScale = 20; // Adjust this value to control parallax intensity
+        const parallaxScale = isMobile.current ? 30 : 20; // Adjust this value to control parallax intensity
         const targetX = x * layer.speed * parallaxScale;
         let targetY = -y * layer.speed * parallaxScale; // Negative Y for natural movement
 
@@ -95,9 +95,9 @@ const MultiLayerSVG = (props: MultiLayerSVGProps) => {
   return (
     <group
       ref={groupRef}
-      scale={0.018}
+      scale={isMobile.current ? 0.0160 : 0.18}
       rotation={[Math.PI, 0, 0]}
-      position={[-11, 4.75, 0]} // Center the SVG: -(1200/2)*0.01, -(675/2)*0.01
+      position={ isMobile.current ? [-9.5, 3.50, 0]: [-11, 4.75, 0] } // Center the SVG: -(1200/2)*0.01, -(675/2)*0.01
     >
       {layers.map((layer, i) => (
         <group key={i} ref={(el) => { layerRefs.current[i] = el; }}>
