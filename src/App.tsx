@@ -16,12 +16,12 @@ function App() {
         <div className="flex gap-2 pl-5 border-l border-l-gray-700">
           <a href="https://github.com/rishisharma08" target="_blank" rel="noopener noreferrer">
             <IconGithub
-              className="size-5"
+              className="size-5 dark:fill-white"
             />
           </a>
           <a href="https://www.linkedin.com/in/rishisharma013/" target="_blank" rel="noopener noreferrer">
             <IconLinkedin
-              className="size-5"
+              className="size-5 dark:fill-white"
             />
           </a>
         </div>

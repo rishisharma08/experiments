@@ -2,9 +2,11 @@ import { Outlet, NavLink } from "react-router";
 import routes from './routeConfig';
 import type { RouteConfig } from './routeConfig';
 import './App.css';
-import Bg from "./components/general/Bg";
+// import Bg from "./components/general/Bg";
 import MenuHamburgerButton from "./components/general/MenuHamburgerButton";
 import { useState, Suspense } from "react";
+// import { FancyBg } from "./components/general/FancyBg";
+import Bg from "./components/general/Bg";
 
 interface SidebarLinksProps {
   routes: RouteConfig[],
@@ -30,6 +32,7 @@ function SidebarLinks({ routes, parentPath = '', onLinkClick }: SidebarLinksProp
                 "block " + ( isActive ? "is-active accent-color " : "" )
               }
               onClick={onLinkClick}
+              viewTransition
             >
               {route.title}
             </NavLink>
@@ -51,17 +54,32 @@ function Layout(){
       className="dark:text-gray-300 flex gap-4 h-full"
     >
       <Bg
-        className="pointer-events-none absolute z-0 left-0 top-0 w-1/2 sm:w-125"
+        className="pointer-events-none absolute z-0 left-0 top-0 w-1/2 sm:w-125 fill-black dark:fill-white opacity-2 dark:opacity-5"
         style={{
           height: "auto",
           aspectRatio: `10/7`,
-          opacity: 0.02,
+          // opacity: 0.02,
         }}
       />
+      {/* <FancyBg
+        className="pointer-events-none absolute z-0 left-0 top-0 w-1/2 sm:w-125 text-black dark:text-white opacity-2 dark:opacity-5"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          // aspectRatio: `10/7`,
+          // opacity: 1,
+        }}
+        fill="currentColor"
+      /> */}
       <aside
-        className={`flex-none p-0 basis-0 overflow-hidden absolute right-0 h-full bg-white dark:bg-gray-900 transition-all duration-300 sm:basis-75 sm:p-2 sm:relative sm:w-auto sm:bg-transparent z-10 ${isMenuOpen ? 'w-full p-2' : 'w-0'}`}
+        className={`flex-none p-0 basis-0 overflow-hidden absolute right-0 h-full bg-white dark:bg-gray-900 transition-all duration-300 sm:basis-75 sm:p-2 sm:relative sm:w-auto sm:bg-transparent dark:sm:bg-transparent z-10 ${isMenuOpen ? 'w-full p-2' : 'w-0'}`}
       >
-        <nav>
+        <nav
+          className="backdrop-blur-xs"
+        >
           <SidebarLinks routes={navRoutes} onLinkClick={() => setIsMenuOpen(false)} />
         </nav>
       </aside>

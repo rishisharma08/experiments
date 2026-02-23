@@ -48,7 +48,7 @@ function ImageObjectPosition() {
         <img
           className="dragme"
           ref={drag3Ref}
-          src="/experiments/attachment.jpg"
+          src={`${import.meta.env.BASE_URL}attachment.jpg`}
           style={{
             display: "block",
             width: "100%",

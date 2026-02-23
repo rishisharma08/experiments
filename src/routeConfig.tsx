@@ -11,6 +11,7 @@ const ImageObjectPosition = lazy(()=>import( 'demos/usedrag/components/ImageObje
 const DemosIndex = lazy(()=>import( './components/demos' ));
 const CssEasing = lazy(()=>import( './components/demos/usedrag/components/CssEasing' ));
 const UseDragIndex = lazy(()=>import( './components/demos/usedrag/UseDragIndex' ));
+const Page404 = lazy(()=>import( 'src/404' ));
 
 export interface RouteConfig {
   path?: string;
@@ -89,13 +90,19 @@ const routeConfig: RouteConfig[] = [
                 handle: { title: "Drag Image with Object Position" }
               }
             ]
+          },
+          {
+            path: "404",
+            title: "404",
+            handle: { title: "404" },
+            element: <Page404 />
           }
         ]
       },
       {
         path: "*",
-        element: <App />,
-        title: "Home",
+        element: <Page404 />,
+        title: "404",
         showInMenu: false,
       }
     ]
