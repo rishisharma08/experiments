@@ -1,1 +1,0 @@
-import{j as n}from"./index-BSI_ilWz.js";function e(t){const{className:o="",...r}=t;return n.jsx("button",{type:"button",className:`bg-gray-900 hover:bg-gray-700 transition-colors duration-300 rounded px-3 py-2 font-mono text-sm font-normal text-white mt-2 uppercase cursor-pointer tracking-normal ${o}`,...r})}export{e as B};
