@@ -116,7 +116,7 @@ export const Bg404 = ( props: Bg404Props ) => {
       {...others}
     >
       <Canvas
-        gl={{ antialias: true, powerPreference: 'high-performance' }} 
+        gl={{ antialias: true, powerPreference: 'high-performance' }}
         camera={{ position: [0, 0, 6], fov: 75 }}
         style={{
           pointerEvents: "none"
